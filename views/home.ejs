@@ -1,0 +1,26 @@
+<%- include("partials/header"); -%>
+<h1>Welcome to Daily Journal</h1>
+<p> <%= homePara %> </p>
+<% posts.forEach(function(post) { %>
+    <div class="card rounded p-2 shadow mb-3">
+      <div class="card-body ">
+        <h5 class="card-title"><%= post.title %></h5>
+        <p class="card-text"><%= post.content.substring(0, 200) %>...</p>
+        <div class="btn-group" role="group" aria-label="Third group">
+            <a href="/posts/<%= post._id %>" class="btn btn-success">View</a> 
+          </div> 
+        
+        <div class="btn-group" role="group" aria-label="Third group">
+            <form method="post" action="/deletePost">
+                <input type="hidden" name="remove2" value="<%= post._id %>">
+                <button type="submit" class="btn btn-danger delete-button">Delete</button>
+              </form>
+          </div>
+      </div>
+    </div>
+  <% }) %>
+  
+
+
+
+<%- include("partials/footer"); -%> 
